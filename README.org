@@ -36,9 +36,9 @@ file.
    For a basic configuration, add this to your =~/.spacemacs= inside
    ~dotspacemacs/user-config~:
 *** evil-tutor-ja
-By default, the variable ~evil-tutor-working-ja-directory~ is assigned =~.emacs.d/.tutor-ja=.
+By default, the variable ~evil-tutor-working-ja-directory~ is assigned to =~.emacs.d/.tutor-ja=.
 *** migemo
-By default, the variable ~migemo-dictionary~ is assigned
+By default, the variable ~migemo-dictionary~ is assigned to
 ~/usr/local/share/migemo/utf-8/migemo-dict~. If you want it to be another
 directory, you must re-set the variable. For example, if you install ~cmigemo~
 using
@@ -47,10 +47,10 @@ sudo apt-get install cmigemo
 #+END_SRC
 in ubuntu, you should add:
 #+BEGIN_SRC emacs-lisp
-  (eval-after-load "migemo"
-    (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict"))
+(japanese :variables
+          migemo-dictionary  "/usr/share/migemo/utf-8/migemo-dict")
 #+END_SRC
-inside ~dotspacemacs/user-config~.
+inside ~dotspacemacs-configuration-layers~.
 *** avy-migemo
 By default, you can use ~migemo~ for ~avy.el~. For ~ivy.el~, you should add:
 #+BEGIN_SRC emacs-lisp

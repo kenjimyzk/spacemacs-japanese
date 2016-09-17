@@ -26,11 +26,10 @@
 
 (defun japanese/init-migemo ()
   (use-package migemo
-    :defer t
+    ;; :defer t
     :config
     (setq migemo-command "cmigemo")
     (setq migemo-options '("-q" "--emacs" "-i" "\a"))
-    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
     (setq migemo-user-dictionary nil)
     (setq migemo-regex-dictionary nil)
     (setq migemo-coding-system 'utf-8-unix)
@@ -54,16 +53,17 @@
 
 (defun japanese/init-japanese-holidays ()
   (use-package japanese-holidays
-    :config
-            (setq calendar-holidays
-                  (append japanese-holidays local-holidays other-holidays))
-            (setq mark-holidays-in-calendar t)
-            (setq japanese-holiday-weekend '(0 6)
-                  japanese-holiday-weekend-marker
-                  '(holiday nil nil nil nil nil japanese-holiday-saturday))
-            (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
-            (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)
-            (add-hook 'calendar-today-visible-hook 'calendar-mark-today)))
+    :config (with-eval-after-load "holidays"
+              (setq calendar-holidays
+                    (append japanese-holidays holiday-local-holidays holiday-other-holidays))
+              (setq mark-holidays-in-calendar t)
+              (setq japanese-holiday-weekend '(0 6)
+                    japanese-holiday-weekend-marker
+                    '(holiday nil nil nil nil nil japanese-holiday-saturday))
+              (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
+              (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)
+              (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
+              )))
 
 (defun japanese/init-pangu-spacing ()
   (use-package pangu-spacing
