@@ -39,7 +39,7 @@ file.
 By default, the variable ~evil-tutor-working-ja-directory~ is assigned to =~.emacs.d/.tutor-ja=.
 *** migemo
 By default, the variable ~migemo-dictionary~ is assigned to
-~/usr/local/share/migemo/utf-8/migemo-dict~. If you want it to be another
+~/usr/local/share/cmigemo/utf-8/migemo-dict~. If you want it to be another
 directory, you must re-set the variable. For example, if you install ~cmigemo~
 using
 #+BEGIN_SRC bash
