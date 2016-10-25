@@ -34,17 +34,12 @@
     (setq migemo-regex-dictionary nil)
     (setq migemo-coding-system 'utf-8-unix)
     (setq search-default-regexp-mode nil)
-    (migemo-init)
-    (japanese/post-init-helm-mode)))
-
-(defun japanese/post-init-helm-mode ()
-  (with-eval-after-load "helm"
-    (helm-migemo-mode 1)))
+    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+    (migemo-init)))
 
 (defun japanese/init-avy-migemo ()
   (use-package avy-migemo
-    :config
-      (avy-migemo-mode 1)))
+    :config (avy-migemo-mode 1)))
 
 (defun japanese/init-ddskk ()
   (use-package ddskk
@@ -53,32 +48,33 @@
 
 (defun japanese/init-japanese-holidays ()
   (use-package japanese-holidays
-    :config (with-eval-after-load "holidays"
-              (setq calendar-holidays
-                    (append japanese-holidays holiday-local-holidays holiday-other-holidays))
-              (setq mark-holidays-in-calendar t)
-              (setq japanese-holiday-weekend '(0 6)
-                    japanese-holiday-weekend-marker
-                    '(holiday nil nil nil nil nil japanese-holiday-saturday))
-              (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
-              (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)
-              (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
-              )))
+    :config
+    (with-eval-after-load "holidays"
+      (setq calendar-holidays
+            (append japanese-holidays holiday-local-holidays holiday-other-holidays))
+      (setq mark-holidays-in-calendar t)
+      (setq japanese-holiday-weekend '(0 6)
+            japanese-holiday-weekend-marker
+            '(holiday nil nil nil nil nil japanese-holiday-saturday))
+      (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
+      (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)
+      (add-hook 'calendar-today-visible-hook 'calendar-mark-today))))
 
 (defun japanese/init-pangu-spacing ()
   (use-package pangu-spacing
-    :init (progn ;; replacing `chinese-two-byte' by `japanese'
-                 (setq pangu-spacing-chinese-before-english-regexp
-                       (rx (group-n 1 (category japanese))
-                           (group-n 2 (in "a-zA-Z0-9"))))
-                 (setq pangu-spacing-chinese-after-english-regexp
-                       (rx (group-n 1 (in "a-zA-Z0-9"))
-                           (group-n 2 (category japanese))))
-                 (spacemacs|hide-lighter pangu-spacing-mode)
-                 ;; Always insert `real' space in text-mode including org-mode.
-                 (setq pangu-spacing-real-insert-separtor t)
-                 ;; (global-pangu-spacing-mode 1)
-                 (add-hook 'text-mode-hook 'pangu-spacing-mode))))
+    :init
+    (progn ;; replacing `chinese-two-byte' by `japanese'
+      (setq pangu-spacing-chinese-before-english-regexp
+            (rx (group-n 1 (category japanese))
+                (group-n 2 (in "a-zA-Z0-9"))))
+      (setq pangu-spacing-chinese-after-english-regexp
+            (rx (group-n 1 (in "a-zA-Z0-9"))
+                (group-n 2 (category japanese))))
+      (spacemacs|hide-lighter pangu-spacing-mode)
+      ;; Always insert `real' space in text-mode including org-mode.
+      (setq pangu-spacing-real-insert-separtor t)
+      ;; (global-pangu-spacing-mode 1)
+      (add-hook 'text-mode-hook 'pangu-spacing-mode))))
 
 (defun japanese/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice

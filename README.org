@@ -1,14 +1,13 @@
 #+TITLE: Japanese layer
 #+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../../css/readtheorg.css" />
-
-
 * Table of Contents                                         :TOC_4_org:noexport:
- - [[Description    ][Description    ]]
+ - [[Description][Description]]
  - [[Install][Install]]
    - [[Layer][Layer]]
    - [[Configuration][Configuration]]
      - [[evil-tutor-ja][evil-tutor-ja]]
      - [[migemo][migemo]]
+     - [[helm-with-migemo][helm-with-migemo]]
      - [[avy-migemo][avy-migemo]]
      - [[ddskk][ddskk]]
      - [[pangu-spacing][pangu-spacing]]
@@ -31,15 +30,14 @@ This Layer adds Japanese related packages:
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =japanese= to the existing =dotspacemacs-configuration-layers= list in this
 file.
-
 ** Configuration
    For a basic configuration, add this to your =~/.spacemacs= inside
    ~dotspacemacs/user-config~:
 *** evil-tutor-ja
-By default, the variable ~evil-tutor-working-ja-directory~ is assigned to =~.emacs.d/.tutor-ja=.
+By default, the variable ~evil-tutor-working-ja-directory~ is assigned =~.emacs.d/.tutor-ja=.
 *** migemo
-By default, the variable ~migemo-dictionary~ is assigned to
-~/usr/local/share/cmigemo/utf-8/migemo-dict~. If you want it to be another
+By default, the variable ~migemo-dictionary~ is assigned
+~/usr/local/share/migemo/utf-8/migemo-dict~. If you want it to be another
 directory, you must re-set the variable. For example, if you install ~cmigemo~
 using
 #+BEGIN_SRC bash
@@ -47,10 +45,19 @@ sudo apt-get install cmigemo
 #+END_SRC
 in ubuntu, you should add:
 #+BEGIN_SRC emacs-lisp
-(japanese :variables
-          migemo-dictionary  "/usr/share/migemo/utf-8/migemo-dict")
+  (eval-after-load "migemo"
+    (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict"))
 #+END_SRC
-inside ~dotspacemacs-configuration-layers~.
+inside ~dotspacemacs/user-config~.
+*** helm-with-migemo
+If you want to use helm with migemo, you should add:
+#+BEGIN_SRC emacs-lisp
+  (with-eval-after-load "helm"
+    (helm-migemo-mode 1))
+#+END_SRC
+inside ~dotspacemacs/user-config~. Note that you may find in a package called
+~helm-migemo.el~ in MELPA. However, this package is deprecated and not supported
+by helm.
 *** avy-migemo
 By default, you can use ~migemo~ for ~avy.el~. For ~ivy.el~, you should add:
 #+BEGIN_SRC emacs-lisp
