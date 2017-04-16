@@ -45,8 +45,8 @@ sudo apt-get install cmigemo
 #+END_SRC
 in ubuntu, you should add:
 #+BEGIN_SRC emacs-lisp
-  (eval-after-load "migemo"
-    (setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict"))
+  (with-eval-after-load "migemo"
+    (setq migemo-dictionary "/usr/cmigemo/utf-8/migemo-dict"))
 #+END_SRC
 inside ~dotspacemacs/user-config~.
 *** helm-with-migemo
