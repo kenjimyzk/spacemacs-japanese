@@ -39,7 +39,7 @@
       (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict"))
      ((eq system-type 'gnu/linux)
       (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))))
-    (migemo-init)))
+    (migemo-init))
 
 (defun japanese/init-avy-migemo ()
   (use-package avy-migemo
