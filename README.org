@@ -39,7 +39,7 @@ By default, the variable ~evil-tutor-working-ja-directory~ is assigned =~/.emacs
 By default, the variable ~migemo-dictionary~ is assigned
 ~/usr/local/share/migemo/utf-8/migemo-dict~ in MacOS, or ~/usr/local/cmigemo/utf-8/migemo-dict~ in linux. 
 If you want it to be another directory, you must re-set the variable. 
-For example, if you install ~cmigemo~ in the directory ~c:\app\cmigemo-default-win64~ in Windows 64bit, you should add:
+For example, if you install [[https://www.kaoriya.net/software/cmigemo/][C/Migemo for Windows 62bit]] in the directory ~c:\app\cmigemo-default-win64~, you should add:
 #+BEGIN_SRC emacs-lisp
   (with-eval-after-load "migemo"
     (setq migemo-dictionary "c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"))
@@ -76,10 +76,9 @@ By default, you can use ~avy-migemo~ for ~helm-mode~. For ~ivy-mode~, you should
   (require 'avy-migemo-e.g.counsel))
 #+END_SRC
 inside ~dotspacemacs/user-config~. 
-
 *** ddskk
 You can write a configuration file ~​~/.skk~. For detailed configuration, see
-some [[http://openlab.ring.gr.jp/skk/doc.html][documents]].
+some [[https://skk-dev.github.io/ddskk/skk.html][documents]].
 *** pangu-spacing
 By default, ~pangu-spacing-mode~ is applied to ~text-mode~. If you prefer the
 mode globally, add:
