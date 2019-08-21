@@ -44,7 +44,7 @@ For example, if you install [[https://www.kaoriya.net/software/cmigemo/][C/Migem
   (with-eval-after-load "migemo"
     (setq migemo-dictionary "c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict"))
 #+END_SRC
-inside ~dotspacemacs/user-config~
+inside ~dotspacemacs/user-config~, or
 #+begin_src emacs-lisp
 (japanese :variables
           migemo-dictionary "c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict")
@@ -56,7 +56,7 @@ If you want to use helm with migemo, you should add:
   (with-eval-after-load "migemo"
     (helm-migemo-mode 1))
 #+END_SRC
-inside ~dotspacemacs/user-config~. Alternatively
+inside ~dotspacemacs/user-config~, or
 #+begin_src emacs-lisp
    (japanese :variables
               helm-migemo-mode 1)
