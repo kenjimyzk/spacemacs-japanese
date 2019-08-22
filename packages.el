@@ -1,6 +1,6 @@
 ;;; packages.el --- Japanese Layer packages File for Spacemacs
 ;;
-;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
 ;;
 ;; Author: Kenji Miyazaki <kenjimyzk@gmail.com>
 ;; URL: https://github.com/kenjimyzk/
@@ -12,13 +12,15 @@
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
 (setq japanese-packages
-      '(evil-tutor-ja
+      '(
+        evil-tutor-ja
         migemo
         avy-migemo
         ddskk
         japanese-holidays
         pangu-spacing
-        org))
+        org
+        ))
 
 (defun japanese/init-evil-tutor-ja ()
   (use-package evil-tutor-ja
@@ -26,7 +28,6 @@
 
 (defun japanese/init-migemo ()
   (use-package migemo
-    ;; :defer t
     :config
     (setq migemo-command "cmigemo")
     (setq migemo-options '("-q" "--emacs" "-i" "\a"))
@@ -38,8 +39,7 @@
      ((eq system-type 'darwin)
       (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict"))
      ((eq system-type 'gnu/linux)
-      (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")))
-    )
+      (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))))
   (migemo-init))
 
 (defun japanese/init-avy-migemo ()
