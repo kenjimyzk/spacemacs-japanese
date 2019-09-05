@@ -1,27 +1,20 @@
 #+TITLE: Japanese layer
+#+HTML_HEAD_EXTRA: <link rel="stylesheet" type="text/css" href="../../css/readtheorg.css" />
+* Table of Contents                                         :TOC_4_org:noexport:
+- [[Description][Description]]
+- [[Install][Install]]
+  - [[Layer][Layer]]
+  - [[Configuration][Configuration]]
+    - [[evil-tutor-ja][evil-tutor-ja]]
+    - [[migemo][migemo]]
+    - [[helm-with-migemo][helm-with-migemo]]
+    - [[avy-migemo][avy-migemo]]
+    - [[ddskk][ddskk]]
+    - [[pangu-spacing][pangu-spacing]]
+- [[Key Bindings][Key Bindings]]
 
-#+TAGS: i18n|layer
-
-[[file:img/Japanese.png]]
-
-* Table of Contents                     :TOC_5_gh:noexport:
-- [[#description][Description]]
-  - [[#features][Features:]]
-- [[#install][Install]]
-  - [[#layer][Layer]]
-  - [[#configuration][Configuration]]
-    - [[#evil-tutor-ja][evil-tutor-ja]]
-    - [[#migemo][migemo]]
-    - [[#helm-with-migemo][helm-with-migemo]]
-    - [[#avy-migemo][avy-migemo]]
-    - [[#ddskk][ddskk]]
-    - [[#pangu-spacing][pangu-spacing]]
-- [[#key-bindings][Key bindings]]
-
-* Description
-This Layer adds Japanese related packages.
-
-** Features:
+* Description    
+This Layer adds Japanese related packages:
 - [[https://github.com/kenjimyzk/evil-tutor-ja][evil-tutor-ja]]: Japanese Vimtutor adapted to Emacs+Evil and wrapped in a major mode
 - [[https://github.com/emacs-jp/migemo][migemo]]: Japanese incremental search through dynamic pattern expansion
 - [[https://github.com/emacs-helm/helm/wiki/Migemo][helm-migemo-mode]]: helm with migemo
@@ -32,22 +25,19 @@ This Layer adds Japanese related packages.
   characters.
 - Join consecutive Japanese lines into a single long line without unwanted space
   when exporting org-mode to html.
-
 * Install
 ** Layer
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =japanese= to the existing =dotspacemacs-configuration-layers= list in this
 file.
-
 ** Configuration
    For a basic configuration, add this to your =~/.spacemacs= inside
    ~dotspacemacs/user-config~:
 *** evil-tutor-ja
 By default, the variable ~evil-tutor-working-ja-directory~ is assigned =~/.emacs.d/.tutor-ja=.
-
 *** migemo
 By default, the variable ~migemo-dictionary~ is assigned
-~/usr/local/share/migemo/utf-8/migemo-dict~ in MacOS, or ~/usr/local/cmigemo/utf-8/migemo-dict~ in linux. 
+~/usr/local/share/migemo/utf-8/migemo-dict~ in macOS, or ~/usr/local/cmigemo/utf-8/migemo-dict~ in Linux. 
 If you want it to be another directory, you must re-set the variable. 
 For example, if you install [[https://www.kaoriya.net/software/cmigemo/][C/Migemo for Windows 62bit]] in the directory ~c:\app\cmigemo-default-win64~, you should add:
 #+BEGIN_SRC emacs-lisp
@@ -60,7 +50,6 @@ inside ~dotspacemacs/user-config~, or
           migemo-dictionary "c:/app/cmigemo-default-win64/dict/utf-8/migemo-dict")
 #+end_src
 inside ~dotspacemacs-configuration-layers~.
-
 *** helm-with-migemo
 If you want to use helm with migemo, you should add:
 #+BEGIN_SRC emacs-lisp
@@ -75,10 +64,9 @@ inside ~dotspacemacs/user-config~, or
 inside ~dotspacemacs-configuration-layers~. Note that you may find in a package called
 ~helm-migemo.el~ in MELPA. However, this package is deprecated and not supported
 by helm.
-
 *** avy-migemo
-Note that ~avy-migemo~ in MELPA does not work
-currently, so you had better use a [[https://github.com/tam17aki/avy-migemo][forked version]] alternatively.
+Note that ~avy-migemo~ in ELPA does not work
+currently, so you can use a [[https://github.com/tam17aki/avy-migemo][forked version]] alternatively.
 
 By default, you can use ~avy-migemo~ for ~helm-mode~. For ~ivy-mode~, you should add:
 #+BEGIN_SRC emacs-lisp
@@ -88,11 +76,9 @@ By default, you can use ~avy-migemo~ for ~helm-mode~. For ~ivy-mode~, you should
   (require 'avy-migemo-e.g.counsel))
 #+END_SRC
 inside ~dotspacemacs/user-config~. 
-
 *** ddskk
 You can write a configuration file ~​~/.skk~. For detailed configuration, see
 some [[https://skk-dev.github.io/ddskk/skk.html][documents]].
-
 *** pangu-spacing
 By default, ~pangu-spacing-mode~ is applied to ~text-mode~. If you prefer the
 mode globally, add:
@@ -100,6 +86,5 @@ mode globally, add:
 (global-pangu-spacing-mode 1)
 #+END_SRC
 inside ~dotspacemacs/user-config~.
-
-* Key bindings
+* Key Bindings
 By default, ~C-x j~ toggles ~skk-mode~.

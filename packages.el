@@ -1,6 +1,6 @@
 ;;; packages.el --- Japanese Layer packages File for Spacemacs
 ;;
-;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2019 Sylvain Benner & Contributors
 ;;
 ;; Author: Kenji Miyazaki <kenjimyzk@gmail.com>
 ;; URL: https://github.com/kenjimyzk/
@@ -12,15 +12,16 @@
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
 (setq japanese-packages
-      '(
-        evil-tutor-ja
+      '(evil-tutor-ja
         migemo
-        avy-migemo
+        ;; avy-migemo
+        (avy-migemo :step pre
+                    :location (recipe :fetcher github
+                                      :repo tam17aki/avy-migemo))
         ddskk
         japanese-holidays
         pangu-spacing
-        org
-        ))
+        org))
 
 (defun japanese/init-evil-tutor-ja ()
   (use-package evil-tutor-ja
@@ -39,12 +40,19 @@
      ((eq system-type 'darwin)
       (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict"))
      ((eq system-type 'gnu/linux)
-      (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))))
-  (migemo-init))
+      (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")))
+    (migemo-init)))
 
 (defun japanese/init-avy-migemo ()
   (use-package avy-migemo
-    :config (avy-migemo-mode 1)))
+    :config
+    (avy-migemo-mode 1)
+    (with-eval-after-load "helm"
+      (helm-migemo-mode 1))
+    (with-eval-after-load "ivy"
+      (use-package avy-migemo-e.g.ivy)
+      (use-package avy-migemo-e.g.swiper)
+      (use-package avy-migemo-e.g.counsel))))
 
 (defun japanese/init-ddskk ()
   (use-package ddskk
