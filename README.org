@@ -54,8 +54,8 @@ inside ~dotspacemacs-configuration-layers~.
 Note that you may find in a package called ~helm-migemo.el~ in MELPA. However,
 this package is deprecated and not supported by helm.
 *** avy-migemo
-Note that ~avy-migemo~ in ELPA does not work
-currently, so we use a [[https://github.com/tam17aki/avy-migemo][forked version]] alternatively.
+Note that ~avy-migemo~ in MELPA does not work currently, so we use a [[https://github.com/tam17aki/avy-migemo][forked
+version]] alternatively.
 *** ddskk
 You can write a configuration file ~​~/.skk~. For detailed configuration, see
 some [[https://skk-dev.github.io/ddskk/skk.html][documents]].
